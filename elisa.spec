@@ -14,8 +14,9 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: python
 BuildRequires: python-setuptools
 BuildRequires: python-devel
-BuildRequires: ImageMagick
 BuildRequires: python-twisted
+BuildRequires: ImageMagick
+BuildRequires: desktop-file-utils
 Requires: pigment
 Requires: python-imaging
 Requires: python-twisted
