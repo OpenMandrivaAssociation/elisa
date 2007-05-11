@@ -9,7 +9,7 @@ Release: %{release}
 Source0: http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.bz2
 License: GPL, MIT
 Group: Development/Python
-Url: https://core.fluendo.com/pigment/trac
+Url: http://elisa.fluendo.com/
 BuildArch: noarch
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: python
