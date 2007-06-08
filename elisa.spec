@@ -1,12 +1,14 @@
 %define name elisa
 %define version 0.1.6
-%define release %mkrel 1
+%define release %mkrel 2
 
 Summary: Media center written in Python
 Name: %{name}
 Version: %{version}
 Release: %{release}
 Source0: http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.bz2
+# (fc) 0.1.6-2mdv fix hal plugin (SVN)
+Patch0: elisa-0.1.6-fixhal.patch
 License: GPL, MIT
 Group: Development/Python
 Url: http://elisa.fluendo.com/
@@ -24,6 +26,8 @@ Requires: python-twisted
 Requires: gnome-python-extras
 Requires: gstreamer0.10-python
 Requires: python-sqlite2
+Requires: python-setuptools
+Requires: dbus-python
 
 %description
 Elisa is a project to create an open source cross platform media center 
@@ -36,6 +40,7 @@ systems.
 
 %prep
 %setup -q
+%patch0 -p1 -b .fixhal
 
 %build
 
