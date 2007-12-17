@@ -13,7 +13,6 @@ License: GPL, MIT
 Group: Development/Python
 Url: http://elisa.fluendo.com/
 BuildArch: noarch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: python
 BuildRequires: python-setuptools
 BuildRequires: python-devel
