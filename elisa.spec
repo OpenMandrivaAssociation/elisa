@@ -84,4 +84,5 @@ rm -rf %{buildroot}
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{py_puresitedir}/%{name}
+%{py_puresitedir}/external_plugins
 %{py_puresitedir}/%{name}-%{version}-py%pyver.egg-info
