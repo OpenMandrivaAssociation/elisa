@@ -16,6 +16,7 @@ BuildRequires:	python-devel
 BuildRequires:	python-twisted
 BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
+BuildRequires:	gstreamer0.10-python
 Requires:	pigment-python
 Requires:	python-imaging
 Requires:	python-twisted
