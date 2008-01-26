@@ -1,6 +1,8 @@
+%define debug_package	%{nil}
+
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.3.2
+Version:	0.3.3
 Release:	%mkrel 1
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
 License:	GPLv2 and MIT
@@ -14,7 +16,7 @@ BuildRequires:	python-devel
 BuildRequires:	python-twisted
 BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
-Requires:	pigment
+Requires:	pigment-python
 Requires:	python-imaging
 Requires:	python-twisted
 Requires:	gnome-python-extras
@@ -43,27 +45,33 @@ rm -rf %{buildroot}
 python setup.py install --root=%{buildroot}
 
 # Install some stuff manually because the build process can't.
-
 install -D -m644 data/%{name}.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
 install -D -m644 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 # Generate and install 32x32 and 16x16 icons.
-
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/{32x32,16x16}/apps
 
 convert -scale 32 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
 convert -scale 16 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 
-# Desktop entry.
-
-desktop-file-install --vendor="" \
-  --remove-category="X-Ximian-Main" \
-  --remove-category=";X-Red-Hat-Base" \
-  --remove-key="Version" \
-  --dir %{buildroot}%{_datadir}/applications %{buildroot}%{_datadir}/applications/%{name}.desktop
+# Menu file is completely screwed up, re-create it is easiest
+rm -f %{buildroot}%{_datadir}/applications/%{name}.desktop
+cat > %{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
+[Desktop Entry]
+Name=Elisa Media Center
+Comment=Play movies and songs on TV with remote
+Exec=%{name} %U
+StartupWMClass=%{name}
+Icon=%{name}
+Terminal=false
+Type=Application
+StartupNotify=true
+MimeType=foo/bar;foo2/bar2;
+Categories=GNOME;GTK;AudioVideo;Audio;Video;Player;
+X-Osso-Service=com.fluendo.elisa
+EOF
 
 # Delete silly unused icon.
-
 rm -f %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
 %post
@@ -84,5 +92,4 @@ rm -rf %{buildroot}
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{py_puresitedir}/%{name}
-%{py_puresitedir}/external_plugins
 %{py_puresitedir}/%{name}-%{version}-py%pyver.egg-info
