@@ -3,7 +3,7 @@
 Summary:	Media center written in Python
 Name:		elisa
 Version:	0.3.3
-Release:	%mkrel 1
+Release:	%mkrel 2
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
 License:	GPLv2 and MIT
 Group:		Development/Python
@@ -23,6 +23,8 @@ Requires:	python-twisted
 Requires:	gnome-python-extras
 Requires:	gstreamer0.10-python
 Requires:	python-sqlite2
+Requires:	pyxdg
+Requires:	python-setuptools
 Suggests:	gstreamer0.10-plugins-bad
 Suggests:	python-gpod
 Suggests:	python-dbus
