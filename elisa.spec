@@ -3,9 +3,9 @@
 Summary:	Media center written in Python
 Name:		elisa
 Version:	0.3.3
-Release:	%mkrel 2
+Release:	%mkrel 3
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
-License:	GPLv2 and MIT
+License:	GPLv3 and MIT
 Group:		Development/Python
 URL:		http://elisa.fluendo.com/
 BuildArch:	noarch
@@ -40,6 +40,8 @@ systems.
 
 %prep
 %setup -q
+# As the ChangeLog says, 'ew' - AdamW 2008/02
+rm -f elisa/plugins/ugly/youtube/libgstflvdemux.so
 
 %build
 
