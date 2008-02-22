@@ -1,10 +1,22 @@
 %define debug_package	%{nil}
+%define svn	5063
+%if %svn
+%define release	%mkrel 0.%svn.1
+%else
+%define release	%mkrel 1
+%endif
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.3.3
-Release:	%mkrel 3
+Version:	0.3.3.1
+Release:	%{release}
+%if %svn
+# svn co https://code.fluendo.com/elisa/svn/trunk elisa
+Source0:	%{name}-%{svn}.tar.lzma
+%else
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
+%endif
+Patch0:		elisa-0.3.3.1-slideshow.patch
 License:	GPLv3 and MIT
 Group:		Development/Python
 URL:		http://elisa.fluendo.com/
@@ -39,27 +51,30 @@ interoperate with devices following the DLNA standard like Intel’s ViiV
 systems.
 
 %prep
-%setup -q
-# As the ChangeLog says, 'ew' - AdamW 2008/02
-rm -f elisa/plugins/ugly/youtube/libgstflvdemux.so
+%setup -q -n %{name}
+# correct mandir
+sed -i -e 's,man/man1,share/man/man1,g' elisa-core/setup.py
+%patch0 -p1 -b .slideshow
 
 %build
 
 %install
 rm -rf %{buildroot}
-python setup.py install --root=%{buildroot}
+mkdir -p %{buildroot}%{py_puresitedir}
+export PYTHONPATH=$PYTHONPATH:%{buildroot}%{py_puresitedir}
+./run_elisa_bundles_setups.sh install --root=%{buildroot} --single-version-externally-managed
 
 # Install some stuff manually because the build process can't.
-install -D -m644 data/%{name}.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
-install -D -m644 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+install -D -m644 %{name}-core/data/%{name}.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+install -D -m644 %{name}-core/data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 # Generate and install 32x32 and 16x16 icons.
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/{32x32,16x16}/apps
 
-convert -scale 32 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-convert -scale 16 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+convert -scale 32 %{name}-core/data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+convert -scale 16 %{name}-core/data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 
-# Menu file is completely screwed up, re-create it is easiest
+# Menu file
 rm -f %{buildroot}%{_datadir}/applications/%{name}.desktop
 cat > %{buildroot}%{_datadir}/applications/%{name}.desktop <<EOF
 [Desktop Entry]
@@ -76,8 +91,10 @@ Categories=GNOME;GTK;AudioVideo;Audio;Video;Player;
 X-Osso-Service=com.fluendo.elisa
 EOF
 
-# Delete silly unused icon.
+#don't want these
+rm -rf %{buildroot}%{py_puresitedir}/mswin32
 rm -f %{buildroot}%{_datadir}/pixmaps/%{name}.png
+rm -rf %{buildroot}%{_datadir}/mobile-basic-flash
 
 %post
 %{update_menus}
@@ -92,9 +109,19 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS FAQ FAQ_EXTRA FIRST_RUN HACKING NEWS RELEASE TRANSLATORS
+%doc elisa-core/{AUTHORS,FAQ,FAQ_EXTRA,FIRST_RUN,HACKING,NEWS,RELEASE,TRANSLATORS}
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
+%{_mandir}/man1/%{name}.1*
+%{_datadir}/dbus-1/services/*.service
 %{py_puresitedir}/%{name}
-%{py_puresitedir}/%{name}-%{version}-py%pyver.egg-info
+%{py_puresitedir}/%{name}_boot.*
+%{py_puresitedir}/%{name}-%{version}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}-%{version}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_good-%{version}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_bad-%{version}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_ugly-%{version}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_good-%{version}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}_plugins_bad-%{version}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}_plugins_ugly-%{version}-py%{pyver}-nspkg.pth
