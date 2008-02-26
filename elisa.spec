@@ -6,6 +6,8 @@
 %define release	%mkrel 1
 %endif
 
+%define fversion	0.3.4.rc2
+
 Summary:	Media center written in Python
 Name:		elisa
 Version:	0.3.3.1
@@ -117,11 +119,11 @@ rm -rf %{buildroot}
 %{py_puresitedir}/%{name}
 %{py_puresitedir}/%{name}_get.*
 %{py_puresitedir}/%{name}_boot.*
-%{py_puresitedir}/%{name}-%{version}-py%{pyver}-nspkg.pth
-%{py_puresitedir}/%{name}-%{version}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_good-%{version}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_bad-%{version}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_ugly-%{version}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_good-%{version}-py%{pyver}-nspkg.pth
-%{py_puresitedir}/%{name}_plugins_bad-%{version}-py%{pyver}-nspkg.pth
-%{py_puresitedir}/%{name}_plugins_ugly-%{version}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_good-%{fversion}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_bad-%{fversion}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_ugly-%{fversion}-py%{pyver}.egg-info
+%{py_puresitedir}/%{name}_plugins_good-%{fversion}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}_plugins_bad-%{fversion}-py%{pyver}-nspkg.pth
+%{py_puresitedir}/%{name}_plugins_ugly-%{fversion}-py%{pyver}-nspkg.pth
