@@ -1,7 +1,7 @@
 %define debug_package	%{nil}
 %define svn	5106
 %if %svn
-%define release	%mkrel 0.%svn.1
+%define release	%mkrel 0.%svn.2
 %else
 %define release	%mkrel 1
 %endif
@@ -62,7 +62,7 @@ sed -i -e 's,man/man1,share/man/man1,g' elisa-core/setup.py
 rm -rf %{buildroot}
 mkdir -p %{buildroot}%{py_puresitedir}
 export PYTHONPATH=$PYTHONPATH:%{buildroot}%{py_puresitedir}
-./run_elisa_bundles_setups.sh install --root=%{buildroot} --single-version-externally-managed
+./run_elisa_bundles_setups.sh install --root=%{buildroot} --single-version-externally-managed #--compile --optimize=2
 
 # Install some stuff manually because the build process can't.
 install -D -m644 %{name}-core/data/%{name}.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
