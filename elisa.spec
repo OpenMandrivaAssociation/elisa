@@ -1,5 +1,5 @@
 %define debug_package	%{nil}
-%define svn	5063
+%define svn	5106
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
@@ -16,7 +16,6 @@ Source0:	%{name}-%{svn}.tar.lzma
 %else
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
 %endif
-Patch0:		elisa-0.3.3.1-slideshow.patch
 License:	GPLv3 and MIT
 Group:		Development/Python
 URL:		http://elisa.fluendo.com/
@@ -54,7 +53,6 @@ systems.
 %setup -q -n %{name}
 # correct mandir
 sed -i -e 's,man/man1,share/man/man1,g' elisa-core/setup.py
-%patch0 -p1 -b .slideshow
 
 %build
 
@@ -111,11 +109,13 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc elisa-core/{AUTHORS,FAQ,FAQ_EXTRA,FIRST_RUN,HACKING,NEWS,RELEASE,TRANSLATORS}
 %{_bindir}/%{name}
+%{_bindir}/%{name}-get
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/dbus-1/services/*.service
 %{py_puresitedir}/%{name}
+%{py_puresitedir}/%{name}_get.*
 %{py_puresitedir}/%{name}_boot.*
 %{py_puresitedir}/%{name}-%{version}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{version}-py%{pyver}.egg-info
