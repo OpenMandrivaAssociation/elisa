@@ -11,7 +11,7 @@
 %endif
 %endif
 
-%define fversion	0.3.4.rc2
+%define fversion	0.3.4.rc1
 
 Summary:	Media center written in Python
 Name:		elisa
