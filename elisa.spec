@@ -5,7 +5,7 @@
 %define release	%mkrel 0.%svn.1
 %else
 %if %pre
-%define release %mkrel 0.%pre.1
+%define release %mkrel 0.%pre.2
 %else
 %define release	%mkrel 1
 %endif
@@ -131,6 +131,7 @@ rm -rf %{buildroot}
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/dbus-1/services/*.service
 %{py_puresitedir}/%{name}
+%ghost %{py_puresitedir}/%{name}/plugins
 %{py_puresitedir}/%{name}_boot.*
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
