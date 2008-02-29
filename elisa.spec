@@ -111,6 +111,10 @@ rm -rf %{buildroot}%{py_puresitedir}/mswin32
 rm -f %{buildroot}%{_datadir}/pixmaps/%{name}.png
 rm -rf %{buildroot}%{_datadir}/mobile-basic-flash
 
+# as there's three plugins packages that aren't interdependent, best
+# let the main package own the plugins dir - AdamW 2008/02
+mkdir -p %{buildroot}%{py_puresitedir}/%{name}/plugins
+
 %post
 %{update_menus}
 %{update_icon_cache hicolor}
@@ -131,7 +135,7 @@ rm -rf %{buildroot}
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/dbus-1/services/*.service
 %{py_puresitedir}/%{name}
-%ghost %{py_puresitedir}/%{name}/plugins
+%dir %{py_puresitedir}/%{name}/plugins
 %{py_puresitedir}/%{name}_boot.*
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
