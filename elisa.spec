@@ -1,22 +1,31 @@
 %define debug_package	%{nil}
-%define svn	5106
+%define svn	0
+%define pre	rc1
 %if %svn
-%define release	%mkrel 0.%svn.2
+%define release	%mkrel 0.%svn.1
+%else
+%if %pre
+%define release %mkrel 0.%pre.1
 %else
 %define release	%mkrel 1
+%endif
 %endif
 
 %define fversion	0.3.4.rc2
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.3.3.1
+Version:	0.3.4
 Release:	%{release}
 %if %svn
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
 Source0:	%{name}-%{svn}.tar.lzma
 %else
+%if %pre
+Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.%{pre}.tar.gz
+%else
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
+%endif
 %endif
 License:	GPLv3 and MIT
 Group:		Development/Python
@@ -52,27 +61,33 @@ interoperate with devices following the DLNA standard like Intel’s ViiV
 systems.
 
 %prep
+%if %svn
 %setup -q -n %{name}
+%else
+%if %pre
+%setup -q -n %{name}-%{version}.%{pre}
+%else
+%setup -q
+%endif
+%endif
 # correct mandir
-sed -i -e 's,man/man1,share/man/man1,g' elisa-core/setup.py
+sed -i -e 's,man/man1,share/man/man1,g' setup.py
 
 %build
 
 %install
 rm -rf %{buildroot}
-mkdir -p %{buildroot}%{py_puresitedir}
-export PYTHONPATH=$PYTHONPATH:%{buildroot}%{py_puresitedir}
-./run_elisa_bundles_setups.sh install --root=%{buildroot} --single-version-externally-managed --compile --optimize=2
+python setup.py install --root=%{buildroot} --single-version-externally-managed --compile --optimize=2
 
 # Install some stuff manually because the build process can't.
-install -D -m644 %{name}-core/data/%{name}.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
-install -D -m644 %{name}-core/data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
+install -D -m644 data/%{name}.svg %{buildroot}%{_iconsdir}/hicolor/scalable/apps/%{name}.svg
+install -D -m644 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/48x48/apps/%{name}.png
 
 # Generate and install 32x32 and 16x16 icons.
 mkdir -p %{buildroot}%{_iconsdir}/hicolor/{32x32,16x16}/apps
 
-convert -scale 32 %{name}-core/data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
-convert -scale 16 %{name}-core/data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
+convert -scale 32 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/32x32/apps/%{name}.png
+convert -scale 16 data/%{name}.png %{buildroot}%{_iconsdir}/hicolor/16x16/apps/%{name}.png
 
 # Menu file
 rm -f %{buildroot}%{_datadir}/applications/%{name}.desktop
@@ -109,21 +124,14 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc elisa-core/{AUTHORS,FAQ,FAQ_EXTRA,FIRST_RUN,HACKING,NEWS,RELEASE,TRANSLATORS}
+%doc AUTHORS FAQ FAQ_EXTRA FIRST_RUN HACKING NEWS RELEASE TRANSLATORS
 %{_bindir}/%{name}
-%{_bindir}/%{name}-get
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/dbus-1/services/*.service
 %{py_puresitedir}/%{name}
-%{py_puresitedir}/%{name}_get.*
 %{py_puresitedir}/%{name}_boot.*
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_good-%{fversion}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_bad-%{fversion}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_ugly-%{fversion}-py%{pyver}.egg-info
-%{py_puresitedir}/%{name}_plugins_good-%{fversion}-py%{pyver}-nspkg.pth
-%{py_puresitedir}/%{name}_plugins_bad-%{fversion}-py%{pyver}-nspkg.pth
-%{py_puresitedir}/%{name}_plugins_ugly-%{fversion}-py%{pyver}-nspkg.pth
+
