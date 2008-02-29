@@ -5,7 +5,7 @@
 %define release	%mkrel 0.%svn.1
 %else
 %if %pre
-%define release %mkrel 0.%pre.2
+%define release %mkrel 0.%pre.1
 %else
 %define release	%mkrel 1
 %endif
