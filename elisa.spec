@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 %define svn	0
-%define pre	rc1
+%define pre	rc3
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
@@ -11,7 +11,7 @@
 %endif
 %endif
 
-%define fversion	0.3.4.rc1
+%define fversion	%{version}.%{pre}
 
 Summary:	Media center written in Python
 Name:		elisa
@@ -130,12 +130,15 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS FAQ FAQ_EXTRA FIRST_RUN HACKING NEWS RELEASE TRANSLATORS
 %{_bindir}/%{name}
+%{_bindir}/%{name}-get
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/dbus-1/services/*.service
 %{py_puresitedir}/%{name}
-%dir %{py_puresitedir}/%{name}/plugins
+%{py_puresitedir}/%{name}_get.py*
+%{py_puresitedir}/%{name}_plugin_core_setup.py*
+%{py_puresitedir}/generic_setup.py*
 %{py_puresitedir}/%{name}_boot.*
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
