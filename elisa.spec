@@ -5,7 +5,7 @@
 %define release	%mkrel 0.%svn.1
 %else
 %if %pre
-%define release %mkrel 0.%pre.1
+%define release %mkrel 0.%pre.2
 %else
 %define release	%mkrel 1
 %endif
@@ -47,6 +47,7 @@ Requires:	gstreamer0.10-python
 Requires:	python-sqlite2
 Requires:	pyxdg
 Requires:	python-setuptools
+Requires:	elisa-plugins-good
 Suggests:	gstreamer0.10-plugins-bad
 Suggests:	python-gpod
 Suggests:	python-dbus
