@@ -1,17 +1,19 @@
 %define debug_package	%{nil}
 %define svn	0
-%define pre	rc3
+%define pre	0
 %if %svn
 %define release	%mkrel 0.%svn.1
 %else
 %if %pre
-%define release %mkrel 0.%pre.3
+%define release %mkrel 0.%pre.1
 %else
 %define release	%mkrel 1
 %endif
 %endif
 
-%define fversion	%{version}.%{pre}
+# It's the same for releases, but different for pre-releases: please
+# don't remove, even if it seems superfluous - AdamW 2008/03
+%define fversion	%{version}
 
 Summary:	Media center written in Python
 Name:		elisa
@@ -28,7 +30,7 @@ Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.g
 %endif
 %endif
 License:	GPLv3 and MIT
-Group:		Development/Python
+Group:		Graphical desktop/Other
 URL:		http://elisa.fluendo.com/
 BuildArch:	noarch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -39,19 +41,9 @@ BuildRequires:	python-twisted
 BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	gstreamer0.10-python
-Requires:	pigment-python
-Requires:	python-imaging
-Requires:	python-twisted
-Requires:	gnome-python-extras
-Requires:	gstreamer0.10-python
-Requires:	python-sqlite2
-Requires:	pyxdg
-Requires:	python-setuptools
 Requires:	elisa-plugins-good
 Requires:	elisa-plugins-bad
-Suggests:	gstreamer0.10-plugins-bad
-Suggests:	python-gpod
-Suggests:	python-dbus
+Requires:	elisa-core
 
 %description
 Elisa is a project to create an open source cross platform media center 
@@ -61,6 +53,31 @@ cards by using OpenGL APIs. In addition to personal video recorder
 functionality (PVR) and Music Jukebox support, Elisa will also 
 interoperate with devices following the DLNA standard like Intel’s ViiV 
 systems.
+
+%package core
+Summary:	Media center written in Python: core files
+Group:		Development/Python
+Requires:	pigment-python
+Requires:	python-imaging
+Requires:	python-twisted
+Requires:	gnome-python-extras
+Requires:	gstreamer0.10-python
+Requires:	python-sqlite2
+Requires:	pyxdg
+Requires:	python-setuptools
+Suggests:	gstreamer0.10-plugins-bad
+Suggests:	python-gpod
+Suggests:	python-dbus
+
+%description core
+Elisa is a project to create an open source cross platform media center 
+solution. Elisa runs on top of the GStreamer multimedia framework and 
+takes full advantage of harware acceleration provided by modern graphic 
+cards by using OpenGL APIs. In addition to personal video recorder 
+functionality (PVR) and Music Jukebox support, Elisa will also 
+interoperate with devices following the DLNA standard like Intel’s ViiV 
+systems. This package contains the core Python files for Elisa. It is
+split from the binaries for packaging reasons.
 
 %prep
 %if %svn
@@ -114,7 +131,7 @@ rm -f %{buildroot}%{_datadir}/pixmaps/%{name}.png
 rm -rf %{buildroot}%{_datadir}/mobile-basic-flash
 
 # as there's three plugins packages that aren't interdependent, best
-# let the main package own the plugins dir - AdamW 2008/02
+# let the core package own the plugins dir - AdamW 2008/02
 mkdir -p %{buildroot}%{py_puresitedir}/%{name}/plugins
 
 %post
@@ -137,6 +154,9 @@ rm -rf %{buildroot}
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
 %{_datadir}/dbus-1/services/*.service
+
+%files core
+%defattr(-,root,root)
 %{py_puresitedir}/%{name}
 %{py_puresitedir}/%{name}_get.py*
 %{py_puresitedir}/%{name}_plugin_core_setup.py*
