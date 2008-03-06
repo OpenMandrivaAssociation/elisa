@@ -7,7 +7,7 @@
 %if %pre
 %define release %mkrel 0.%pre.1
 %else
-%define release	%mkrel 1
+%define release	%mkrel 2
 %endif
 %endif
 
@@ -120,7 +120,6 @@ Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true
-MimeType=foo/bar;foo2/bar2;
 Categories=GNOME;GTK;AudioVideo;Audio;Video;Player;
 X-Osso-Service=com.fluendo.elisa
 EOF
