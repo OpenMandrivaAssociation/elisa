@@ -1,13 +1,22 @@
 %define debug_package	%{nil}
+
+%define rel	1
+
 %define svn	0
 %define pre	0
 %if %svn
-%define release	%mkrel 0.%svn.1
+%define release		%mkrel 0.%svn.%rel
+%define distname	%name-%svn.tar.lzma
+%define dirname		%name
 %else
 %if %pre
-%define release %mkrel 0.%pre.1
+%define release		%mkrel 0.%pre.%rel
+%define distname	%name-%version.%pre.tar.gz
+%define dirname		%name-%version.%pre
 %else
-%define release	%mkrel 2
+%define release		%mkrel %rel
+%define distname	%name-%version.tar.gz
+%define dirname		%name-%version
 %endif
 %endif
 
@@ -17,18 +26,13 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.3.4
+Version:	0.3.5
 Release:	%{release}
-%if %svn
+# For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
-Source0:	%{name}-%{svn}.tar.lzma
-%else
-%if %pre
-Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.%{pre}.tar.gz
-%else
-Source0:	http://elisa.fluendo.com/static/download/elisa/%{name}-%{version}.tar.gz
-%endif
-%endif
+Source0:	http://elisa.fluendo.com/static/download/elisa/%{distname}
+# Disable the auto-updater by default - AdamW 2008/03
+Patch0:		elisa-0.3.5-updater.patch
 License:	GPLv3 and MIT
 Group:		Graphical desktop/Other
 URL:		http://elisa.fluendo.com/
@@ -80,15 +84,9 @@ systems. This package contains the core Python files for Elisa. It is
 split from the binaries for packaging reasons.
 
 %prep
-%if %svn
-%setup -q -n %{name}
-%else
-%if %pre
-%setup -q -n %{name}-%{version}.%{pre}
-%else
-%setup -q
-%endif
-%endif
+%setup -q -n %{dirname}
+%patch0 -p1 -b .updater
+
 # correct mandir
 sed -i -e 's,man/man1,share/man/man1,g' setup.py
 
@@ -157,10 +155,8 @@ rm -rf %{buildroot}
 %files core
 %defattr(-,root,root)
 %{py_puresitedir}/%{name}
-%{py_puresitedir}/%{name}_get.py*
 %{py_puresitedir}/%{name}_plugin_core_setup.py*
-%{py_puresitedir}/generic_setup.py*
-%{py_puresitedir}/%{name}_boot.*
+%{py_puresitedir}/%{name}_generic_setup.py*
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
 
