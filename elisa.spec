@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	1
+%define rel	2
 
 %define svn	0
 %define pre	0
@@ -118,7 +118,7 @@ Icon=%{name}
 Terminal=false
 Type=Application
 StartupNotify=true
-Categories=GNOME;GTK;AudioVideo;Audio;Video;Player;
+Categories=GNOME;GTK;AudioVideo;Audio;Video;Player;X-MandrivaLinux-CrossDesktop;
 X-Osso-Service=com.fluendo.elisa
 EOF
 
