@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	2
+%define rel	3
 
 %define svn	0
 %define pre	0
