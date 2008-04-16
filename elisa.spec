@@ -48,6 +48,7 @@ BuildRequires:	gstreamer0.10-python
 Requires:	elisa-plugins-good
 Requires:	elisa-plugins-bad
 Requires:	elisa-core
+Suggests:	elisa-plugins-ugly
 
 %description
 Elisa is a project to create an open source cross platform media center 
