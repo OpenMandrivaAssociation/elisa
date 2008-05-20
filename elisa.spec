@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	3
+%define rel	4
 
 %define svn	0
 %define pre	0
@@ -67,9 +67,11 @@ Requires:	python-imaging
 Requires:	python-twisted
 Requires:	gnome-python-extras
 Requires:	gstreamer0.10-python
+Requires:	gstreamer0.10-plugins-base
 Requires:	python-sqlite2
 Requires:	pyxdg
 Requires:	python-setuptools
+Suggests:	gstreamer0.10-plugins-good
 Suggests:	gstreamer0.10-plugins-bad
 Suggests:	python-gpod
 Suggests:	python-dbus
