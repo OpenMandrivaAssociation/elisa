@@ -134,13 +134,17 @@ rm -rf %{buildroot}%{_datadir}/mobile-basic-flash
 # let the core package own the plugins dir - AdamW 2008/02
 mkdir -p %{buildroot}%{py_puresitedir}/%{name}/plugins
 
+%if %mdkversion < 200900
 %post
 %{update_menus}
 %{update_icon_cache hicolor}
+%endif
 
+%if %mdkversion < 200900
 %postun
 %{clean_menus}
 %{clean_icon_cache hicolor}
+%endif
 
 %clean
 rm -rf %{buildroot}
