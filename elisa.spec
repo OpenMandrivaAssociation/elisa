@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	1
+%define rel	2
 
 %define svn	0
 %define pre	0
@@ -66,6 +66,7 @@ Group:		Development/Python
 Requires:	pigment-python
 Requires:	python-imaging
 Requires:	python-twisted
+Requires:	python-twisted-web2
 Requires:	gnome-python-extras
 Requires:	gstreamer0.10-python
 Requires:	gstreamer0.10-plugins-base
