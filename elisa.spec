@@ -26,7 +26,7 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.5.7
+Version:	0.5.8
 Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
@@ -36,7 +36,7 @@ Source0:	http://elisa.fluendo.com/static/download/elisa/%{distname}
 Patch0:		elisa-0.5.3-updater.patch
 # Disable some plugins that are useless on Linux, as per upstream
 # advice (and thanks Adam Pigg) - AdamW 2008/07
-Patch1:		elisa-0.5.5-unneeded.patch
+Patch1:		elisa-0.5.8-unneeded.patch
 License:	GPLv3 and MIT
 Group:		Graphical desktop/Other
 URL:		http://elisa.fluendo.com/
@@ -49,10 +49,10 @@ BuildRequires:	python-twisted
 BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	gstreamer0.10-python
-Requires:	elisa-plugins-good
-Requires:	elisa-plugins-bad
-Requires:	elisa-core
-Suggests:	elisa-plugins-ugly
+Requires:	elisa-plugins-good = %{version}
+Requires:	elisa-plugins-bad = %{version}
+Requires:	elisa-core = %{version}
+Suggests:	elisa-plugins-ugly = %{version}
 Suggests:	gstreamer0.10-libvisual
 
 %description
