@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	1
+%define rel	2
 
 %define svn	0
 %define pre	0
@@ -81,6 +81,8 @@ Suggests:	gstreamer0.10-plugins-good
 Suggests:	gstreamer0.10-plugins-bad
 Suggests:	python-gpod
 Suggests:	python-dbus
+# To fix upgrade: thanks fcrozat (#44627) - AdamW 2008/10
+Conflicts:	elisa-plugins-good <= 0.3.5
 
 %description core
 Elisa is a project to create an open source cross platform media center 
