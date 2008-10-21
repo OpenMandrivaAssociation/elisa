@@ -26,7 +26,7 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.5.14
+Version:	0.5.15
 Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
@@ -34,9 +34,6 @@ Source0:	http://elisa.fluendo.com/static/download/elisa/%{distname}
 # Make sure some config upgrader widget doesn't enable the auto-updater
 # - AdamW 2008/07
 Patch0:		elisa-0.5.3-updater.patch
-# Disable some plugins that are useless on Linux, as per upstream
-# advice (and thanks Adam Pigg) - AdamW 2008/07
-Patch1:		elisa-0.5.14-unneeded.patch
 License:	GPLv3 and MIT
 Group:		Graphical desktop/Other
 URL:		http://elisa.fluendo.com/
@@ -97,7 +94,6 @@ split from the binaries for packaging reasons.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p1 -b .updater
-%patch1 -p1 -b .unneeded
 
 # correct mandir
 sed -i -e 's,man/man1,share/man/man1,g' setup.py
