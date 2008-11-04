@@ -26,7 +26,7 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.5.16
+Version:	0.5.17
 Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
@@ -47,9 +47,7 @@ BuildRequires:	ImageMagick
 BuildRequires:	desktop-file-utils
 BuildRequires:	gstreamer0.10-python
 Requires:	elisa-plugins-good = %{version}
-#Requires:	elisa-plugins-bad = %{version}
-# Hardcoding just for this release, the versioning's messy
-Requires:	elisa-plugins-bad = 0.5.16.1
+Requires:	elisa-plugins-bad = %{version}
 Requires:	elisa-core = %{version}
 Suggests:	elisa-plugins-ugly = %{version}
 Suggests:	gstreamer0.10-libvisual
