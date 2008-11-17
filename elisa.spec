@@ -26,7 +26,7 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.5.17
+Version:	0.5.18
 Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
@@ -94,9 +94,6 @@ split from the binaries for packaging reasons.
 %prep
 %setup -q -n %{dirname}
 %patch0 -p1 -b .updater
-
-# correct mandir
-sed -i -e 's,man/man1,share/man/man1,g' setup.py
 
 %build
 
