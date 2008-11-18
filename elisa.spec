@@ -156,7 +156,6 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %doc AUTHORS FAQ FIRST_RUN NEWS RELEASE TRANSLATORS
 %{_bindir}/%{name}
-%{_bindir}/%{name}-get
 %{_datadir}/applications/%{name}.desktop
 %{_iconsdir}/hicolor/*/apps/*
 %{_mandir}/man1/%{name}.1*
@@ -165,7 +164,6 @@ rm -rf %{buildroot}
 %files core
 %defattr(-,root,root)
 %{py_puresitedir}/%{name}
-%{py_puresitedir}/%{name}_generic_setup.py*
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}-nspkg.pth
 %{py_puresitedir}/%{name}-%{fversion}-py%{pyver}.egg-info
 
