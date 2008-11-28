@@ -70,7 +70,7 @@ Requires:	gstreamer0.10-python
 Requires:	gstreamer0.10-plugins-base
 Requires:	python-sqlite2
 Requires:	pyxdg
-Requires:	python-setuptools
+Requires:	python-pkg-resources
 Suggests:	gstreamer0.10-plugins-good
 Suggests:	gstreamer0.10-plugins-bad
 Suggests:	python-gpod
