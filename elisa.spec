@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	2
+%define rel	3
 
 %define svn	0
 %define pre	0
@@ -70,6 +70,8 @@ Requires:	gstreamer0.10-python
 Requires:	gstreamer0.10-plugins-base
 Requires:	python-sqlite2
 Requires:	pyxdg
+# See https://bugs.launchpad.net/elisa/+bug/303938
+Requires:	python-setuptools
 Requires:	python-pkg-resources
 Suggests:	gstreamer0.10-plugins-good
 Suggests:	gstreamer0.10-plugins-bad
