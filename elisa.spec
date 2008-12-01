@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	3
+%define rel	1
 
 %define svn	0
 %define pre	0
@@ -26,7 +26,7 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.5.19
+Version:	0.5.20
 Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
