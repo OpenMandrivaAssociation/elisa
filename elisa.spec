@@ -1,6 +1,6 @@
 %define debug_package	%{nil}
 
-%define rel	1
+%define rel	2
 
 %define svn	0
 %define pre	0
@@ -31,6 +31,8 @@ Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
 Source0:	http://elisa.fluendo.com/static/download/elisa/%{distname}
+# From Debian: disable automatic updates - AdamW 2009/02
+Patch0:		http://patch-tracking.debian.net/patch/series/dl/elisa/0.5.28-1/00_disable-plugin-updates.patch
 License:	GPLv3 and MIT
 Group:		Graphical desktop/Other
 URL:		http://elisa.fluendo.com/
@@ -90,6 +92,7 @@ split from the binaries for packaging reasons.
 
 %prep
 %setup -q -n %{dirname}
+%patch0 -p0 -b .update_disable
 
 %build
 
