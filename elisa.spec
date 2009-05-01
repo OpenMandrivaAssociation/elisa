@@ -26,7 +26,7 @@
 
 Summary:	Media center written in Python
 Name:		elisa
-Version:	0.5.35
+Version:	0.5.37
 Release:	%{release}
 # For SVN:
 # svn co https://code.fluendo.com/elisa/svn/trunk elisa
