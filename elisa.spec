@@ -6,7 +6,7 @@ License:	LGPLv2+
 Group:		Sound
 Url:		https://github.com/KDE/elisa
 Source0:	elisa-0.0.81.tar.gz
-Source1:	elisa_ru.tar.gz
+Source1:	elisa-0.0.81_ru.tar.gz
 Patch0:		elisa-desktop.patch
 Patch1:		elisa-0.0.1-cmake.patch
 BuildRequires:	cmake(ECM)
