@@ -69,4 +69,3 @@ A powerful media player for Plasma.
 %ninja_install -C build
 
 %find_lang %{name} kcm_elisa_local_file %{name}.lang --with-kde --with-html
-
