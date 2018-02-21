@@ -57,9 +57,6 @@ A powerful media player for Plasma.
 
 %prep
 %setup -q
-# Disabled patch0 and patch1
-# %patch0 -p1
-# %patch1 -p1
 
 # Russian locale
 pushd po
