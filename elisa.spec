@@ -1,11 +1,11 @@
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	0.1
+Version:	0.81
 Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		https://github.com/KDE/elisa
-Source0:	elisa-0.1.tar.xz
+Source0:	elisa-0.0.81.tar.gz
 Source1:	elisa_ru.tar.gz
 Patch0:		elisa-desktop.patch
 Patch1:		elisa-0.0.1-cmake.patch
