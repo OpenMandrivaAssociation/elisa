@@ -39,6 +39,7 @@ BuildRequires:	pkgconfig(Qt5Test)
 BuildRequires:	pkgconfig(Qt5WebSockets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
+BuildRequires:	pkgconfig(Qt5QuickTest)
 Requires:	qt5-qtquickcontrols2
 
 %description
