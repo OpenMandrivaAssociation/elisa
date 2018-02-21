@@ -7,9 +7,10 @@ Group:		Sound
 Url:		https://github.com/KDE/elisa
 Source0:	elisa-0.0.81.tar.gz
 Source1:	elisa-0.0.81_ru.tar.gz
-# Disabled p0 fixed by upstream
-#Patch0:		elisa-desktop.patch
-Patch1:		elisa-0.0.1-cmake.patch
+# Disabled Patch0 fixed by upstream
+# Patch0:		elisa-desktop.patch
+# Disabled Patch1 fided by upstream?
+# Patch1:		elisa-0.0.1-cmake.patch
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5ConfigWidgets)
@@ -56,9 +57,9 @@ A powerful media player for Plasma.
 
 %prep
 %setup -q
-# Disabled patch0
-#%patch0 -p1
-%patch1 -p1
+# Disabled patch0 and patch1
+# %patch0 -p1
+# %patch1 -p1
 
 # Russian locale
 pushd po
