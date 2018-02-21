@@ -51,6 +51,7 @@ A powerful media player for Plasma.
 %{_datadir}/kservices5//kcm_elisa_local_file.desktop
 %{_datadir}/kpackage/kcms/kcm_elisa_local_file/
 %{_iconsdir}/hicolor/scalable/apps/elisa.svg
+%{_iconsdir}/hicolor/*/apps/elisa.png
 %{_datadir}/metainfo/org.kde.elisa.appdata.xml
 %{_qt5_plugindir}/kcms/kcm_elisa_local_file.so
 
