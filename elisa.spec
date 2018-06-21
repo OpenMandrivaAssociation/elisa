@@ -19,6 +19,8 @@ BuildRequires:	cmake(KF5FileMetaData)
 BuildRequires:	cmake(KF5I18n)
 BuildRequires:	cmake(KF5KCMUtils)
 BuildRequires:	cmake(KF5XmlGui)
+BuildRequires:	cmake(KF5DBusAddons)
+BuildRequires:	cmake(KF5KIO)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:	pkgconfig(Qt5Core) >= 5.9.0
 BuildRequires:	pkgconfig(Qt5DBus)
