@@ -3,7 +3,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	0.2.1
+Version:	0.2.80
 Epoch:		1
 Release:	1
 License:	LGPLv2+
@@ -74,8 +74,7 @@ Library for %{name}.
 #--------------------------------------------------------------------
 
 %prep
-%setup -q
-%apply_patches
+%autosetup -p1
 
 %cmake_kde5
 
