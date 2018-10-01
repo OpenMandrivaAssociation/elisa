@@ -1,6 +1,3 @@
-%define major 0
-%define libname %mklibname %{name} %{major}
-
 Summary:	A powerful media player for Plasma
 Name:		elisa
 Version:	0.3.0
@@ -44,22 +41,15 @@ BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 Requires:	qt5-qtquickcontrols2
 Requires:	%{libname} = %{EVRD}
+%rename %{_lib}%{name}0
 
 %description
 A powerful media player for Plasma.
 
-%package -n %{libname}
-Summary:	Library for %{name}.
-Group:	System/Libraries
-
-%description -n %{libname}
-Library for %{name}.
-
-%files -n %{libname}
-%{_libdir}/lib%{name}Lib.so.%{major}*
-
 %files -f %{name}.lang
+%dir %{_libdir}/%{name}
 %{_bindir}/elisa
+%{_libdir}/%{name}/*.so*
 %{_datadir}/applications/org.kde.elisa.desktop
 %{_datadir}/kservices5//kcm_elisa_local_file.desktop
 %{_datadir}/kpackage/kcms/kcm_elisa_local_file/
@@ -84,7 +74,4 @@ Library for %{name}.
 %install
 %ninja_install -C build
 
-rm -rf %{buildroot}%{_libdir}/libelisaLib.so
-
 %find_lang %{name} --with-kde --all-name
-
