@@ -40,7 +40,6 @@ BuildRequires:	pkgconfig(Qt5WebSockets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 Requires:	qt5-qtquickcontrols2
-Requires:	%{libname} = %{EVRD}
 %rename %{_lib}%{name}0
 
 %description
