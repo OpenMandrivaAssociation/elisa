@@ -7,6 +7,7 @@ License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
 Source0:	https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Patch0:		elisa-0.3.0-cmakelists.patch
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5ConfigWidgets)
