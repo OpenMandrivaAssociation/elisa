@@ -2,14 +2,13 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	0.3.0
+Version:	0.4.0
 Epoch:		1
-Release:	3
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
 Source0:	https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
-Patch0:		elisa-0.3.0-cmakelists.patch
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5ConfigWidgets)
