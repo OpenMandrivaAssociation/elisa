@@ -2,13 +2,13 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	0.4.2
+Version:	19.12.1
 Epoch:		1
 Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
-Source0:	https://download.kde.org/stable/%{name}/%{version}/%{name}-%{version}.tar.xz
+Source0:	https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5ConfigWidgets)
@@ -54,12 +54,10 @@ A powerful media player for Plasma.
 %{_bindir}/elisa
 %{_libdir}/%{name}/*.so*
 %{_datadir}/applications/org.kde.elisa.desktop
-%{_datadir}/kservices5//kcm_elisa_local_file.desktop
-%{_datadir}/kpackage/kcms/kcm_elisa_local_file/
+%{_datadir}/qlogging-categories5/elisa.categories
 %{_iconsdir}/hicolor/scalable/apps/elisa.svg
 %{_iconsdir}/hicolor/*/apps/elisa.png
 %{_datadir}/metainfo/org.kde.elisa.appdata.xml
-%{_qt5_plugindir}/kcms/kcm_elisa_local_file.so
 %{_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
 %{_docdir}/HTML/*/elisa
