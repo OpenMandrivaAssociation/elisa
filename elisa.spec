@@ -4,7 +4,7 @@ Summary:	A powerful media player for Plasma
 Name:		elisa
 Version:	19.12.1
 Epoch:		1
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
@@ -44,6 +44,10 @@ BuildRequires:	pkgconfig(Qt5WebSockets)
 BuildRequires:	pkgconfig(Qt5Widgets)
 BuildRequires:	pkgconfig(Qt5X11Extras)
 Requires:	qt5-qtquickcontrols2
+# libvlc5 is not pulled at installation time and if user remove VLC, then Elisa is completly broken. So let's force it (angry)
+# https://forum.openmandriva.org/t/elisa-crash-on-rock/3700/15
+Requires: %{_lib}vlc5
+
 %rename %{_lib}%{name}0
 
 %description
