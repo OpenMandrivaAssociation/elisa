@@ -46,7 +46,7 @@ BuildRequires:	pkgconfig(Qt5X11Extras)
 Requires:	qt5-qtquickcontrols2
 # libvlc5 is not pulled at installation time and if user remove VLC, then Elisa is completly broken. So let's force it (angry)
 # https://forum.openmandriva.org/t/elisa-crash-on-rock/3700/15
-Requires: %{lib}vlc5
+Requires: %{_lib}vlc5
 
 %rename %{_lib}%{name}0
 
