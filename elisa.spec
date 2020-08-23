@@ -2,7 +2,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	20.04.3
+Version:	20.08.0
 Epoch:		1
 Release:	1
 License:	LGPLv2+
@@ -47,6 +47,7 @@ Requires:	qt5-qtquickcontrols2
 # libvlc5 is not pulled at installation time and if user remove VLC, then Elisa is completly broken. So let's force it (angry)
 # https://forum.openmandriva.org/t/elisa-crash-on-rock/3700/15
 Requires: %{_lib}vlc5
+Requires: vlc-plugin-pulse
 
 %rename %{_lib}%{name}0
 
