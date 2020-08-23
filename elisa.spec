@@ -65,6 +65,7 @@ A powerful media player for Plasma.
 %{_datadir}/metainfo/org.kde.elisa.appdata.xml
 %{_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
+%{_libdir}/qt5/qml/org/kde/elisa/plugins.qmltypes
 %{_docdir}/HTML/*/elisa
 
 #--------------------------------------------------------------------
