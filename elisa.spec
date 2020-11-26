@@ -1,14 +1,15 @@
+%define stable %([ "`echo %{version} |cut -d. -f3`" -ge 80 ] && echo -n un; echo -n stable)
 %define _cmake_skip_rpath %nil
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	20.08.1
+Version:	20.11.80
 Epoch:		1
 Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
-Source0:	https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz
+Source0:	https://download.kde.org/%{stable}/release-service/%{version}/src/%{name}-%{version}.tar.xz
 BuildRequires:	cmake(ECM)
 BuildRequires:	cmake(KF5Archive)
 BuildRequires:	cmake(KF5ConfigWidgets)
