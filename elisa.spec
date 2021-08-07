@@ -25,6 +25,7 @@ BuildRequires:  cmake(KF5Kirigami2)
 BuildRequires:	cmake(KF5XmlGui)
 BuildRequires:	cmake(KF5DBusAddons)
 BuildRequires:	cmake(KF5KIO)
+BuildRequires:	cmake(KF5IconThemes)
 BuildRequires:	pkgconfig(gl)
 BuildRequires:  pkgconfig(libvlc)
 BuildRequires:	pkgconfig(Qt5Core) >= 5.9.0
