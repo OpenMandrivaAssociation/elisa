@@ -3,9 +3,9 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	21.12.2
+Version:	22.03.80
 Epoch:		1
-Release:	2
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
@@ -68,7 +68,7 @@ A powerful media player for Plasma.
 %{_libdir}/qt5/qml/org/kde/elisa/libelisaqmlplugin.so
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
 %{_libdir}/qt5/qml/org/kde/elisa/plugins.qmltypes
-%{_docdir}/HTML/*/elisa
+%{_datadir}/dbus-1/services/org.kde.elisa.service
 
 #--------------------------------------------------------------------
 
