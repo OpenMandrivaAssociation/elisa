@@ -69,6 +69,7 @@ A powerful media player for Plasma.
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
 %{_libdir}/qt5/qml/org/kde/elisa/plugins.qmltypes
 %{_datadir}/dbus-1/services/org.kde.elisa.service
+%{_docdir}/HTML/*/elisa
 
 #--------------------------------------------------------------------
 
