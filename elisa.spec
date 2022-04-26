@@ -3,7 +3,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	22.03.90
+Version:	22.04.0
 Epoch:		1
 Release:	1
 License:	LGPLv2+
@@ -69,7 +69,6 @@ A powerful media player for Plasma.
 %{_libdir}/qt5/qml/org/kde/elisa/qmldir
 %{_libdir}/qt5/qml/org/kde/elisa/plugins.qmltypes
 %{_datadir}/dbus-1/services/org.kde.elisa.service
-%{_docdir}/HTML/*/elisa
 
 #--------------------------------------------------------------------
 
