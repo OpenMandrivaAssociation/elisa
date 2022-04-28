@@ -83,4 +83,4 @@ A powerful media player for Plasma.
 %install
 %ninja_install -C build
 
-%find_lang %{name} --with-kde --all-name
+%find_lang %{name} --with-kde --with-html --all-name
