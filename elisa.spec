@@ -3,7 +3,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	22.04.0
+Version:	22.04.1
 Epoch:		1
 Release:	1
 License:	LGPLv2+
@@ -82,5 +82,4 @@ A powerful media player for Plasma.
 
 %install
 %ninja_install -C build
-
-%find_lang %{name} --with-kde --with-html --all-name
+%find_lang %{name} --with-html
