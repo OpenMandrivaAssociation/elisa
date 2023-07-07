@@ -3,7 +3,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	23.04.2
+Version:	23.04.3
 Epoch:		1
 Release:	1
 License:	LGPLv2+
