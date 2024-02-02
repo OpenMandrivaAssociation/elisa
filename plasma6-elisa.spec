@@ -3,8 +3,8 @@
 
 Summary:	A powerful media player for Plasma
 Name:		plasma6-elisa
-Version:	24.01.90
-Release:	2
+Version:	24.01.95
+Release:	1
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
