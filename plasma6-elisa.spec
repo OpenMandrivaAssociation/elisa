@@ -50,10 +50,9 @@ BuildRequires:	pkgconfig(Qt6Test)
 BuildRequires:	pkgconfig(Qt6QuickTest)
 BuildRequires:	pkgconfig(Qt6WebSockets)
 BuildRequires:	pkgconfig(Qt6Widgets)
-Requires:	qt6-qtquickcontrols2
-# libvlc6 is not pulled at installation time and if user remove VLC, then Elisa is completly broken. So let's force it (angry)
+# libvlc5 is not pulled at installation time and if user remove VLC, then Elisa is completly broken. So let's force it (angry)
 # https://forum.openmandriva.org/t/elisa-crash-on-rock/3700/16
-Requires: %{_lib}vlc6
+Requires: %{_lib}vlc5
 Requires: vlc-plugin-pulse
 
 %rename %{_lib}%{name}0
