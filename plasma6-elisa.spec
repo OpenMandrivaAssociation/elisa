@@ -6,7 +6,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		plasma6-elisa
-Version:	24.02.2
+Version:	24.05.0
 Release:	%{?git:0.%{git}.}1
 License:	LGPLv2+
 Group:		Sound
@@ -69,9 +69,9 @@ A powerful media player for Plasma.
 %{_iconsdir}/hicolor/scalable/apps/elisa.svg
 %{_iconsdir}/hicolor/*/apps/elisa.png
 %{_datadir}/metainfo/org.kde.elisa.appdata.xml
-%{_libdir}/qt6/qml/org/kde/elisa/libelisaqmlplugin.so
-%{_libdir}/qt6/qml/org/kde/elisa/qmldir
-%{_libdir}/qt6/qml/org/kde/elisa/plugins.qmltypes
+#{_libdir}/qt6/qml/org/kde/elisa/libelisaqmlplugin.so
+#{_libdir}/qt6/qml/org/kde/elisa/qmldir
+#{_libdir}/qt6/qml/org/kde/elisa/plugins.qmltypes
 %{_datadir}/dbus-1/services/org.kde.elisa.service
 
 #--------------------------------------------------------------------
