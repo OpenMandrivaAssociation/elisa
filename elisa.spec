@@ -5,7 +5,7 @@ Summary:	A powerful media player for Plasma
 Name:		elisa
 Version:	23.08.5
 Epoch:		1
-Release:	1
+Release:	2
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
