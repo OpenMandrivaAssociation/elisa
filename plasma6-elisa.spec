@@ -7,7 +7,7 @@
 Summary:	A powerful media player for Plasma
 Name:		plasma6-elisa
 Version:	24.12.3
-Release:	%{?git:0.%{git}.}1
+Release:	%{?git:0.%{git}.}2
 License:	LGPLv2+
 Group:		Sound
 Url:		https://community.kde.org/Elisa
