@@ -5,7 +5,7 @@
 %define _cmake_skip_rpath %nil
 
 Summary:	A powerful media player for Plasma
-Name:		plasma6-elisa
+Name:		elisa
 Version:	25.04.0
 Release:	%{?git:0.%{git}.}1
 License:	LGPLv2+
