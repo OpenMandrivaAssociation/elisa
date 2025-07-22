@@ -6,7 +6,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	25.04.0
+Version:	25.04.3
 Release:	%{?git:0.%{git}.}1
 License:	LGPLv2+
 Group:		Sound
@@ -57,6 +57,10 @@ Requires: %{_lib}vlc5
 Requires: vlc-plugin-pulse
 
 %rename %{_lib}%{name}0
+%rename plasma6-elisa
+
+BuildSystem:	cmake
+BuildOption:	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON
 
 %description
 A powerful media player for Plasma.
@@ -74,19 +78,3 @@ A powerful media player for Plasma.
 #{_libdir}/qt6/qml/org/kde/elisa/qmldir
 #{_libdir}/qt6/qml/org/kde/elisa/plugins.qmltypes
 %{_datadir}/dbus-1/services/org.kde.elisa.service
-
-#--------------------------------------------------------------------
-
-%prep
-%autosetup -p1 -n elisa-%{?git:%{gitbranchd}}%{!?git:%{version}}
-
-%cmake \
-	-DKDE_INSTALL_USE_QT_SYS_PATHS:BOOL=ON \
-	-G Ninja
-
-%build
-%ninja -C build
-
-%install
-%ninja_install -C build
-%find_lang elisa --with-html
