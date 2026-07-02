@@ -6,7 +6,7 @@
 
 Summary:	A powerful media player for Plasma
 Name:		elisa
-Version:	26.04.2
+Version:	26.04.3
 Release:	%{?git:0.%{git}.}1
 License:	LGPLv2+
 Group:		Sound
